@@ -1,7 +1,7 @@
 # Jackie Zeng
 # China Rats plus One
 # Soft Dev
-# <randomDevos/python dictionaries/function that picks a random key of a dictionary and the from the list corresponding to the key, pick a random element.>
+# <randomDevos/python dictionaries/function that picks a random key of a dictionary and then from the list corresponding to the key, pick a random element.>
 import random
 
 def randomDevos(dict1):
