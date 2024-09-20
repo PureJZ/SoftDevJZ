@@ -8,7 +8,11 @@ with open('occupations.csv', newline='') as csvfile:
         list1.append(row)
 #print(list1)
 percentage=[]
+job=[]
 for dict1 in list1:
     percentage.append(float(dict1.get("Percentage")))
-print(percentage)
- 
+#print(percentage)
+for dict1 in list1:
+    job.append(dict1.get("Job Class"))
+
+print(random.choices(job[1:-1], weights=percentage[1:-1]))
