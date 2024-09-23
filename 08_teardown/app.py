@@ -1,5 +1,12 @@
 # your heading here
-
+'''
+Jackie Zeng
+China Rats plus one
+SoftDev
+08_teardown
+2024-09-20
+Time spent: 20 min
+'''
 '''
 DISCO:
 <note any discoveries you made here... no matter how small!>
@@ -8,11 +15,11 @@ When I changed what is in the return, the website also matches to what I changed
 
 QCC:
 0. In java, where we would create an object from a class. In this example, a Flask class.
-1. This could be like going to the homepage
-2. I think this will print to the console/terminal where the Flask server is running
-3. I am not sure
+1. This could be like going to the homepage / root
+2. It prints to a local server where the Flask server is running
+3. It displays "No hablo queso" on the html site but it prints "__main__" in the terminal
 4. I think it will appear on the website where the flask server is being runnmed
-5. I have seen this in java, where we call a function of a class through an object of that class
+5. I have seen this in java. This is like calling a method of an object.
  ...
 
 INVESTIGATIVE APPROACH:
@@ -30,7 +37,9 @@ app = Flask(__name__)                    # Q0: Where have you seen similar synta
 
 @app.route("/")                          # Q1: What points of reference do you have for meaning of '/'?
 def hello_world():
-    print(__name__)                      # Q2: Where will this print to? Q3: What will it print?
+    print(__name__)                      # Q2: Where will this print to?
+                                            
+                                        #  Q3: What will it print?
     return "No hablo queso!"             # Q4: Will this appear anywhere? How u know?
 
 app.run()                                # Q5: Where have you seen similar constructs in other languages?
