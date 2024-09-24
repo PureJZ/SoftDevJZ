@@ -8,8 +8,14 @@ app = Flask(__name__)                 #create instance of class Flask
 @app.route("/")                       #assign fxn to route
 def hello_world():
     print("about to print __name__...")
-    print(__name__)                   #where will this go?
+    print(__name__)                   #where will this go? Prints __main__ the console
     return "No hablo queso!"
 
 app.debug = True
 app.run()
+'''
+The browser still returns "No hablo queso!".
+Prints "about to print ___name___..." before printing __main__.
+Debug mode is now enabled. The server automatically reloads
+upon code changes and also gives error messages for exceptions
+'''

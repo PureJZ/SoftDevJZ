@@ -14,3 +14,8 @@ def hello_world():
 if __name__ == "__main__":      # true if this file NOT imported
     app.debug = True            # enable auto-reload upon code change
     app.run()
+'''
+This code checks if the file is being run as the main module with if __name__ == "__main__"
+Debug mode is enabled inside the conditional.
+prints "the __name__ of this module is..." before __main__
+'''
