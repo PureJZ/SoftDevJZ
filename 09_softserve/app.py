@@ -26,7 +26,7 @@ def numbercruncher():
     jobList = "<table><tr><th>Job List</th></tr>"
     for job in jobs:
         jobList += "<tr><td>" + job + "</td></tr>"
-    return (hi + "<br><br> joblist)
+    return (hi + "<br><br>"  + joblist + "</table>")
 
 
 if __name__ == "__main__":      # true if this file NOT imported
