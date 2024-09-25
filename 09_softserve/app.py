@@ -22,11 +22,11 @@ def numbercruncher():
         jobs.append(dict1.get("Job Class"))
     jobs.pop()
     percentage.pop()
-    hi=(random.choices(job, weights=percentage))
+    hi=(random.choices(jobs, weights=percentage))[0]
     jobList = "<table><tr><th>Job List</th></tr>"
     for job in jobs:
         jobList += "<tr><td>" + job + "</td></tr>"
-    return (hi + "<br><br>"  + joblist + "</table>")
+    return ("China Rats plus One with Jackie Zeng, Wen Zhang, Yinwei Zhang and Traveling Team: Jackie Zeng and Chloe Wong" +"<br><br>"+str(hi) + "<br><br>"  + joblist + "</table>")
 
 
 if __name__ == "__main__":      # true if this file NOT imported
