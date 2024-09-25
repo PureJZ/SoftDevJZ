@@ -9,7 +9,7 @@ app = Flask(__name__)           #create instance of class Flask
 def numbercruncher():
     list1=[]
     percentage=[]
-    job=[]
+    jobs=[]
     print("the __name__ of this module is... ")
     print(__name__)
     with open('occupations.csv', newline='') as csvfile:
@@ -19,29 +19,16 @@ def numbercruncher():
     for dict1 in list1:
         percentage.append(float(dict1.get("Percentage")))
     for dict1 in list1:
-        job.append(dict1.get("Job Class"))
-    job.pop()
+        jobs.append(dict1.get("Job Class"))
+    jobs.pop()
     percentage.pop()
-    return job
-    return(random.choices(job, weights=percentage))
-app2= Flask(__name__)
-@app2.route("/")
-def returnlist():
-    list1=[]
-    job=[]
-    print("the __name__ of this module is... ")
-    print(__name__)
-    with open('occupations.csv', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        for row in reader:
-            list1.append(row)
-    for dict1 in list1:
-        job.append(dict1.get("Job Class"))
-    job.pop()
-    return job
+    hi=(random.choices(job, weights=percentage))
+    jobList = "<table><tr><th>Job List</th></tr>"
+    for job in jobs:
+        jobList += "<tr><td>" + job + "</td></tr>"
+    return (hi + "<br><br> joblist)
 
 
 if __name__ == "__main__":      # true if this file NOT imported
     app.debug = True            # enable auto-reload upon code change
     app.run()
-    app2.run()
