@@ -26,7 +26,7 @@ def numbercruncher():
     joblist = "<table><tr><th>Job List</th></tr>"
     for job in jobs:
         joblist += "<tr><td>" + job + "</td></tr>"
-    return ("China Rats plus One with Jackie Zeng, Wen Zhang, Yinwei Zhang and Traveling Team: Jackie Zeng and Chloe Wong" +"<br><br>"+"Chosen Occupation"+str(hi) + "<br><br>"  + joblist + "</table>")
+    return ("China Rats plus One with Jackie Zeng, Wen Zhang, Yinwei Zhang and Traveling Team: Jackie Zeng and Chloe Wong" +"<br><br>"+"Chosen Occupation: "+str(hi) + "<br><br>"  + joblist + "</table>")
 
 
 if __name__ == "__main__":      # true if this file NOT imported
