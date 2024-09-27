@@ -1,3 +1,10 @@
+'''
+Jackie Zeng
+SoftDev
+K09 -- Putting it Together : Learning about Flask and app.py
+2024-09-24
+Time spent: 30 mins
+'''
 from flask import Flask
 import random
 import csv
