@@ -6,12 +6,16 @@
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Q0:
 <your response here>
+Removing render_template will make the function test_tmplt() not render the template as expected
 
 Q1:
 <your response here>
-
+http://127.0.0.1:5000/my_foist_template
 Q2:
 <your response here>
+First argument is name of the template file to be rendered.
+Second is a variable being passed to the template
+Third is another variable passed to the template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 """
 
