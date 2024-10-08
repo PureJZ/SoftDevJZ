@@ -1,0 +1,31 @@
+< your heading here >
+
+DISCO:
+* The print statement in the testmod0.py file automatically ran when importing the module
+* printing app printed the flask object
+* printing request will link the server address at which the html is being hosted
+* I think the request args prints out whatever arguements are sent to the website as we did before
+* but since there is no arguements being passed, it printed out an empty array []
+* printing request.args['username'] will give the PSOD because there is no argument called username 
+* being passed to the template html, causing an error
+* I am able to run the goo function from testmod0 through printing through the console
+-----------------------------------------------------------------------
+
+
+Q/C/C:
+* What does the information I received from printing the header of the request
+* mean? I am not sure what most of it means but I see stuff like
+* Google Chrome and Windows which is the browser and operating system I am currently using
+* What does the "methods = ['GET', 'POST']" next to the app.route do?
+* Does it even do anything?
+* How do I get the other function in testmod0 to print? 
+* I am not sure how to not import the file but also allow app.py to access
+* the things in testmod0.py. I tried doing test = testmod0() but that didn't work
+-----------------------------------------------------------------------
+
+
+OTHER?
+* 
+* 
+* 
+-----------------------------------------------------------------------
