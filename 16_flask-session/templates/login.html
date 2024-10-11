@@ -1,0 +1,35 @@
+<!-- Yinwei Zhang, Wen Zhang, Jackie Zeng
+Wen Zhang
+SoftDev
+K15 <Flask Forms, GET, POST>
+2024-10-8
+Time Spent : 2 Hours
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+    <body>
+        <div>
+            <h1>Team Made in China</h1>
+            <h2>Yinwei Zhang, Wen Zhang, Jackie Zeng</h2>
+
+
+            <form action="/response" method="POST">
+                <div>
+                    <label for="username">Name</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <button type="submit">Submit with POST</button>
+            </form>
+
+            <form action="/response" method="GET">
+                <div>
+                    <label for="username">Name</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <button type="submit">Submit with GET</button>
+            </form>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Response</title>
+
+</head>
+<body>
+<h1>Welcome home, {{username}}</h1>
+
+  <p>Request Method: <b>{{request}}</b></p>
+  <p>GET method is used to request data from the page, and the contents of the request are shown in the URL with a preceding ? mark.
+    Such as a youtube link like: https://www.youtube.com/watch?Something
+  </p>
+  <p>
+    Both GET and POST requests have arguments, but POST is used to submit data directly within the body of the request,
+    not being visible in the URL. POST requests, while repeated with a page refresh,
+    prompts "The page that you're looking for used information that you entered.
+    Returning to that page might cause any action you took to be repeated." This does not happen to GET requests.
+    Generally speaking, GET requests can be repeated easily and shared, and are less secure than POST.
+    However in reality both requests are unsecured without HTTPS and should not ever be used for sensitive information.
+  </p>
+
+
+  <p>Team Made in China</p>
+  <p></p>
+
+<form action="/logout" method="GET">
+    <button type="submit">Logout</button>
+</form>
+
+</body>
+</html>
