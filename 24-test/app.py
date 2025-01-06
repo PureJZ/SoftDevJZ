@@ -6,7 +6,7 @@ app=Flask(__name__)
 
 @app.route('/', methods =["GET", "POST"])
 def index():
-    a=requests.get('https://api.nasa.gov/planetary/apod?api_key=i8i0oQRp50cOmZRCfMT6o7PgdI1xkNK9bCmNBAno')
+    a=requests.get('https://api.pandascore.co/videogames?token=uYeuO5nr_hf24JDGeOdjD_eeal8He0hKwdXeGkGK9rCuhCuj_uA')
     b=a.json()
     return render_template('index.html',l=b['hdurl'], m=b['explanation'])
 if __name__ == '__main__':
