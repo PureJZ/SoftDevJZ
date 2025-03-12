@@ -1,0 +1,4 @@
+Objects can hold bascially any data types and even functions!
+Can add to a list using code instead of hard coding
+Can add classes to a specific item in the html
+Can use code logic to do cool things to HTML
