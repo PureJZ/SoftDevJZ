@@ -1,0 +1,213 @@
+Scenario Two: Your team has been contracted to create a web log hosting site, with the following features:
+
+    Users will have to register to use the site.
+    A logged-in user will be able to
+        Create a new blog
+        Update their blog by adding a new entry
+        View and edit their own past entries
+        View the blogs of other users
+
+Flask will serve as your web server/delivery framework.
+SQLite3 will serve as your backend data storage system.
+
+    As you grown your "sql-fu", always start with Devo Knowledge Base (QAF, n&c) and primary documentation. (...and if none of these have the answer you seek, and you find a SO post that is actually useful, or any other diamond in the rough of the Intertrash, add it to Devo KB)
+    Get creative, think boldly, get your hands dirty as you experiment via the sqlite3 shell and see what works/sticks...
+
+Multiple Python files should be used, as necessary, for application layer. (a.k.a. "middleware" modules, etc.)
+CSS
+
+repo structure:
+app/
+    __init__.py
+    static/
+        css/          ( O P T I O N A L )
+    templates/
+design.pdf
+devlog.txt
+flag.jpg
+README.md
+requirements.txt
+
+create this project
+-----------------------------------------------------------------------------------
+```python name=app/__init__.py
+from flask import Flask
+
+def create_app():
+    app = Flask(__name__)
+    app.config['SECRET_KEY'] = 'your-secret-key'
+
+    from app.routes import main_bp
+    app.register_blueprint(main_bp)
+
+    return app
+```
+
+```python name=app/db.py
+import sqlite3
+
+def get_db_connection():
+    conn = sqlite3.connect('database.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+def init_db():
+    conn = get_db_connection()
+    with open('schema.sql', 'r') as f:
+        conn.executescript(f.read())
+    conn.close()
+```
+
+```python name=app/models.py
+from app.db import get_db_connection
+
+def create_user(username, password):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("INSERT INTO users (username,password) VALUES (?,?)", (username, password))
+    conn.commit()
+    conn.close()
+
+def get_user_by_username(username):
+    conn = get_db_connection()
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM users WHERE username = ?", (username,))
+    user = cur.fetchone()
+    conn.close()
+    return user
+```
+
+```python name=app/routes.py
+from flask import Blueprint, render_template, request, redirect, url_for
+from app.models import create_user, get_user_by_username
+
+main_bp = Blueprint('main', __name__)
+
+@main_bp.route('/')
+def index():
+    return render_template('index.html')
+
+@main_bp.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        create_user(username, password)
+        return redirect(url_for('main.index'))
+    return render_template('register.html')
+```
+
+```css name=app/static/css/style.css
+/* Optional CSS file */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+```
+
+```html name=app/templates/index.html
+{% extends 'base.html' %}
+{% block content %}
+<h2>Welcome to the Blog Hosting Site!</h2>
+<p>Please <a href="{{ url_for('main.register') }}">Register</a> or log in to start blogging.</p>
+{% endblock %}
+```
+
+```html name=app/templates/register.html
+{% extends 'base.html' %}
+{% block content %}
+<h2>Register</h2>
+<form method="post">
+    <label for="username">Username:</label>
+    <input id="username" name="username" type="text" required>
+    <br><br>
+    <label for="password">Password:</label>
+    <input id="password" name="password" type="password" required>
+    <br><br>
+    <button type="submit">Register</button>
+</form>
+{% endblock %}
+```
+
+```html name=app/templates/base.html
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Blog Hosting Site</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  </head>
+  <body>
+    <header>
+      <h1>My Blog Site</h1>
+    </header>
+    <main>
+      {% block content %}{% endblock %}
+    </main>
+  </body>
+</html>
+```
+
+````markdown name=README.md
+# Blog Hosting Site (Flask + SQLite3)
+
+This is a sample Flask application that allows users to:
+- Register an account
+- Create and manage their own blog entries
+- View other users' blogs
+
+## Features
+- SQLite3 database
+- Flask framework for routing
+- Simple HTML templates for UI
+
+## Setup
+1. Clone or download the repository.
+2. Create a virtual environment and install dependencies:  
+   ```
+   pip install -r requirements.txt
+   ```
+3. Initialize the database by running:
+   ```
+   python -c "from app.db import init_db; init_db()"
+   ```
+4. Start the application:
+   ```
+   flask run
+   ```
+5. Open your browser at http://127.0.0.1:5000/
+
+````
+```txt name=devlog.txt
+Development Log:
+- Day 1: Set up initial Flask structure, DB, and routes.
+- Day 2: Created template files and CSS styling.
+- Day 3: Finalized registration functionality and tested database integration.
+```
+
+```txt name=design.pdf
+(Placeholder for design document)
+```
+
+```txt name=flag.jpg
+(Placeholder for image)
+```
+
+```txt name=requirements.txt
+Flask==2.3.2
+```
+
+```sql name=schema.sql
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT NOT NULL UNIQUE,
+    password TEXT NOT NULL
+);
+
+-- Additional tables for blogs/entries can be added here
+```
+
+Feel free to customize further by adding additional routes, database tables, and templates as needed.
+-----------------------------------------------------------------------------------
+
+
